@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
 
 const montserrat = Outfit({
   subsets: ["latin"],
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.className}  antialiased`}
       >
+        <Header/>
         {children}
       </body>
     </html>
