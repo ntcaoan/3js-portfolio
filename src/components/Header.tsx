@@ -2,6 +2,7 @@ import React from "react";
 import { createClient } from "@/prismicio";
 import Link from "next/link";
 import {PrismicNextLink} from "@prismicio/next";
+import Image from "next/image";
 
 export default async function Header() {
     const client = createClient();
@@ -13,7 +14,14 @@ export default async function Header() {
                 <ul>
                     <li>
                         <Link href="/" aria-label="HomePage">
-                            {settings.data.name}
+                            {/*{settings.data.name}*/}
+                            <Image
+                                src="/logo.png"
+                                alt="Logo"
+                                width={64}
+                                height={64}
+                                className="h-8 w-auto"
+                            />
                         </Link>
                     </li>
                     {settings.data.nav_items.map(({link, label}, index) => (
@@ -23,10 +31,8 @@ export default async function Header() {
                             </PrismicNextLink>
                         </li>
                     ))}
-
                 </ul>
             </nav>
-
         </header>
     );
 }
