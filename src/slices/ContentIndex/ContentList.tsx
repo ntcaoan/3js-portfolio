@@ -5,5 +5,6 @@ export default function ContentList() {
         <div>ContentList</div>
     //     is this for the blog and projects thingy??
     //     i add another comment cuz i confused
+    //     sned help
     )
 }
