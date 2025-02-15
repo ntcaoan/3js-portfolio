@@ -20,12 +20,12 @@ export type TechListProps = SliceComponentProps<Content.TechListSlice>;
 /**
  * Component for "TechList" Slices.
  */
-const TechList = ({ slice }: TechListProps): JSX.Element => {
+const TechList = ({ slice }: TechListProps) => {
 
   const component = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
 
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -67,7 +67,7 @@ const TechList = ({ slice }: TechListProps): JSX.Element => {
       className="overflow-hidden"
       ref={component}
     >
-      <Bounded as="div">
+      <Bounded as="section">
         <Heading size="lg" className="mb-8" as="h2">
           {slice.primary.heading}
         </Heading>
