@@ -16,12 +16,12 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
 /**
  * Component for "Hero" Slices.
  */
-const Hero = ({slice}: HeroProps): JSX.Element => {
+const Hero = ({slice}: HeroProps) => {
 
     const component = useRef(null);
 
     useEffect(() => {
-        let ctx = gsap.context(() => {
+        const ctx = gsap.context(() => {
             const tl = gsap.timeline()
             tl.fromTo(".name-animation",
                 {
@@ -85,7 +85,7 @@ const Hero = ({slice}: HeroProps): JSX.Element => {
             <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center">
                 <Shapes/>
                 <div className="col-start-1 md:row-start-1">
-                    <h1 className="mb-8 text-[clamp(3rem,20vmin,20rem)] font-extrabold leading-none
+                    <h1 className="mb-8 text-[clamp(2rem,18vmin,20rem)] font-bold leading-none
                     tracking-tighter"
                         aria-label={
                             slice.primary.first_name + " " + slice.primary.last_name
