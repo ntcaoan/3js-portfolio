@@ -3,7 +3,7 @@
 import { Content } from "@prismicio/client";
 import { SliceComponentProps } from "@prismicio/react";
 import React, {useEffect, useRef} from "react";
-import {MdCircle} from "react-icons/md";
+import { MdFavorite } from "react-icons/md";
 import {gsap} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 
@@ -88,7 +88,7 @@ const TechList = ({ slice }: TechListProps) => {
                   </span>
 
                   <span className="text-2xl">
-                    <MdCircle />
+                    <MdFavorite />
                   </span>
                 </React.Fragment>
             ))}
