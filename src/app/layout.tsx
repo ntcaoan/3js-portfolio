@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="bg-slate-900 text-slate-100">
+    <html lang="en" className="bg-stone-950 text-slate-100">
       <body
         className={`${montserrat.className}  antialiased`}
       >
