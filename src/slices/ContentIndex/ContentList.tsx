@@ -4,6 +4,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {asImageSrc, Content, isFilled} from "@prismicio/client";
 import {MdArrowOutward} from "react-icons/md";
 import Link from "next/link";
+import {gsap} from "gsap";
 
 type ContentListProps = {
     items: Content.BlogPostDocument[] | Content.ProjectDocument[];
@@ -18,8 +19,11 @@ export default function ContentList({
                                         fallbackItemImage,
                                         viewMoreText = "read more...",
 }: ContentListProps) {
-    const components = useRef(null);
+    const component = useRef(null);
+    const revealRef = useRef(null);
     const [currentItem, setCurrentItem] = useState<null | number>(null);
+
+    const lastMousePos = useRef({x: 0, y: 0});
 
     const urlPrefixes = contentType === "Blog" ? "/blog" : "/project";
 
@@ -28,8 +32,33 @@ export default function ContentList({
         const handleMouseMove = (e: MouseEvent) => {
             const mousePos = {x: e.clientX, y: e.clientY + window.scrollY};
 
-        }
-    })
+            // calculate speed and direction
+            const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
+
+            const ctx = gsap.context(() => {
+                if (currentItem !== null) {
+                    const maxY = window.scrollY + window.innerHeight - 350;
+                    const maxX = window.innerWidth - 250;
+
+                    gsap.to(revealRef.current, {
+                        x: gsap.utils.clamp(0, maxX, mousePos.x - 110),
+                        y: gsap.utils.clamp(0, maxY, mousePos.y - 110),
+                        rotation: speed * (mousePos.x > lastMousePos.current.x ? 1 : -1),
+                        ease: "back.out(2)",
+                        duration: 1.3,
+                    });
+                }
+                lastMousePos.current = mousePos;
+                return () => ctx.revert();
+            }, component);
+        };
+
+        window.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            window.removeEventListener("mousemove", handleMouseMove);
+        };
+    }, [currentItem]);
 
     const contentImages = items.map((item) => {
         const image = isFilled.image(item.data.hover_image) ? item.data.hover_image : fallbackItemImage;
@@ -87,6 +116,7 @@ export default function ContentList({
                 style={{
                     backgroundImage: currentItem !== null ? `url(${contentImages[currentItem]})` : "",
                 }}
+                ref={revealRef}
             >
 
             </div>
