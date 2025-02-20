@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {asImageSrc, Content, isFilled} from "@prismicio/client";
 import {MdArrowOutward} from "react-icons/md";
 import Link from "next/link";
@@ -22,6 +22,14 @@ export default function ContentList({
     const [currentItem, setCurrentItem] = useState<null | number>(null);
 
     const urlPrefixes = contentType === "Blog" ? "/blog" : "/project";
+
+    // mouse movement with picture
+    useEffect(() => {
+        const handleMouseMove = (e: MouseEvent) => {
+            const mousePos = {x: e.clientX, y: e.clientY + window.scrollY};
+
+        }
+    })
 
     const contentImages = items.map((item) => {
         const image = isFilled.image(item.data.hover_image) ? item.data.hover_image : fallbackItemImage;
