@@ -33,6 +33,7 @@ export default function Shapes() {
 }
 
 function Geometries() {
+
     const geometries = [
         // center boi
         {
@@ -52,7 +53,7 @@ function Geometries() {
         {
             position: [-1.4, 2, -4],
             r: 0.6,
-            geometry: new THREE.DodecahedronGeometry(1.5), // Soccer Ball
+            geometry: new THREE.CylinderGeometry( 1, 1, 4, 6.4 ), // Soccer Ball
         },
 
         // donut
