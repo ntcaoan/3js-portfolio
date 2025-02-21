@@ -125,8 +125,8 @@ export default function ContentList({
         <div>
             <ul className="grid border-b border-b-slate-100" onMouseLeave={onMouseLeave}>
                 {items.map((item, index) => (
-                    // <React.Fragment>
-                    <>
+                    <React.Fragment key={index}>
+                    {/*<>*/}
                         {isFilled.keyText(item.data.title) && (
                             <li key={index}
                                 className="list-item opacity-0f"
@@ -153,7 +153,7 @@ export default function ContentList({
                                 </Link>
                             </li>
                         )}
-                    </>
+                    </React.Fragment>
                 ))}
             </ul>
 
