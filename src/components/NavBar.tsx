@@ -104,11 +104,11 @@ function NameLogo() {
             className="text-xl font-extrabold tracking-tighter text-slate-900"
         >
             <Image
-                src="/logo.png"
+                src="/anna-logo.png"
                 alt="Logo"
                 width={64}
                 height={64}
-                className="h-8 w-auto"
+                className="h-7 w-auto ml-1"
             />
         </Link>
     );
