@@ -5,6 +5,10 @@ import {asImageSrc, Content, isFilled} from "@prismicio/client";
 import {MdArrowOutward} from "react-icons/md";
 import Link from "next/link";
 import {gsap} from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 type ContentListProps = {
     items: Content.BlogPostDocument[] | Content.ProjectDocument[];
@@ -21,11 +25,38 @@ export default function ContentList({
                                     }: ContentListProps) {
     const component = useRef(null);
     const revealRef = useRef(null);
+    const itemsRef = useRef<Array<HTMLLIElement | null>>([]);
+
     const [currentItem, setCurrentItem] = useState<null | number>(null);
 
     const lastMousePos = useRef({x: 0, y: 0});
 
     const urlPrefixes = contentType === "Blog" ? "/blog" : "/project";
+
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+
+            itemsRef.current.forEach((item) => {
+                gsap.fromTo(item,
+                    {opacity: 0, y: 20},
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1.3,
+                        ease: "eastic.out(1,0.5)", // elastic
+                        scrollTrigger: {
+                            trigger: item,
+                            start: "top bottom-=100px",
+                            end: "bottom center",
+                            toggleActions: "play none none none"
+                        }
+                    }
+                )
+            });
+            return () => ctx.revert();
+        }, component)
+    }, []);
+
 
     // mouse movement with picture
     useEffect(() => {
@@ -84,11 +115,14 @@ export default function ContentList({
         <div>
             <ul className="grid border-b border-b-slate-100" onMouseLeave={onMouseLeave}>
                 {items.map((item, index) => (
-                    <React.Fragment key={item.id}>
+                    // <React.Fragment>
+                    <>
                         {isFilled.keyText(item.data.title) && (
                             <li key={index}
                                 className="list-item opacity-0f"
-                                onMouseEnter={() => onMouseEnter(index)}>
+                                onMouseEnter={() => onMouseEnter(index)}
+                                ref={(el) => (itemsRef.current[index] = el)}
+                            >
                                 <Link
                                     href={urlPrefixes + "/" + item.uid}
                                     className="flex flex-col justify-between border-t border-t-slate-100 py-10 text-slate-200 md:flex-row"
@@ -109,7 +143,7 @@ export default function ContentList({
                                 </Link>
                             </li>
                         )}
-                    </React.Fragment>
+                    </>
                 ))}
             </ul>
 
