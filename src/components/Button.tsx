@@ -11,11 +11,11 @@ type ButtonProps = {
     classname?: string;
 }
 
-export default function Button({linkFied, label, showIcon = true, className}: ButtonProps) {
+export default function Button({linkField, label, showIcon = true}: ButtonProps) {
     return (
         <PrismicNextLink
-            field={linkFied}
-            className={clsx("group relative flex w-fit text-slate-800 items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-50 px-4 py-2 font-bold transition-transform ease-out hover:scale-105", className)}
+            field={linkField}
+            className={clsx("group relative flex w-fit text-slate-800 items-center justify-center overflow-hidden rounded-md border-2 border-slate-900 bg-slate-50 px-4 py-2 font-bold transition-transform ease-out hover:scale-105")}
         >
             {/*button transition/animation*/}
             <span

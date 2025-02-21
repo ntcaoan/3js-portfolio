@@ -6,7 +6,6 @@ import {MdArrowOutward} from "react-icons/md";
 import Link from "next/link";
 import {gsap} from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import contentIndex from "@/slices/ContentIndex/index";
 
 gsap.registerPlugin(ScrollTrigger);
 

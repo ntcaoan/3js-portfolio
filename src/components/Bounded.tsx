@@ -8,7 +8,10 @@ type BoundedProps<T extends React.ElementType = "section"> = {
 } & React.ComponentPropsWithRef<T>;
 
 const Bounded = React.forwardRef<HTMLElement, BoundedProps>(
-    ({ as: Comp = "section", className, children, ...restProps }, ref) => {
+    <T extends React.ElementType = "section">(
+        { as: Comp = "section" as T, className, children, ...restProps }: BoundedProps<T>,
+        ref: React.Ref<T extends keyof JSX.IntrinsicElements ? JSX.IntrinsicElements[T] : HTMLElement>
+    ) => {
         return (
             <Comp
                 ref={ref}
@@ -21,6 +24,6 @@ const Bounded = React.forwardRef<HTMLElement, BoundedProps>(
     }
 );
 
-Bounded.displayName = "Bounded"
+Bounded.displayName = "Bounded";
 
-export default Bounded
+export default Bounded;
