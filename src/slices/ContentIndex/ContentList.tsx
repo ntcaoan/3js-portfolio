@@ -6,6 +6,7 @@ import {MdArrowOutward} from "react-icons/md";
 import Link from "next/link";
 import {gsap} from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import contentIndex from "@/slices/ContentIndex/index";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -92,6 +93,7 @@ export default function ContentList({
         };
     }, [currentItem]);
 
+
     const contentImages = items.map((item) => {
         const image = isFilled.image(item.data.hover_image) ? item.data.hover_image : fallbackItemImage;
 
@@ -102,6 +104,14 @@ export default function ContentList({
             exp: -10,
         })
     });
+
+    useEffect(() => {
+        contentImages.forEach((url) => {
+            if (!url) return;
+            const img = new Image();
+            img.src = url;
+        })
+    }, [contentImages]);
 
     const onMouseEnter = (index: number) => {
         setCurrentItem(index);
@@ -121,7 +131,7 @@ export default function ContentList({
                             <li key={index}
                                 className="list-item opacity-0f"
                                 onMouseEnter={() => onMouseEnter(index)}
-                                ref={(el) => (itemsRef.current[index] = el)}
+                                ref={(el) => {(itemsRef.current[index] = el)}}
                             >
                                 <Link
                                     href={urlPrefixes + "/" + item.uid}
