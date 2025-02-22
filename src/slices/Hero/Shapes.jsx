@@ -12,8 +12,8 @@ export default function Shapes() {
             <Canvas
                 className="z-0"
                 shadows
-                gl={{ antialias: false }}
-                dpr={[1, 1.5]}
+                gl={{ antialias: true }}
+                dpr={[1.5, 2]}
                 camera={{ position: [0, 0, 25], fov: 30, near: 1, far: 40 }}
             >
                 <Suspense fallback={null}>
@@ -39,35 +39,35 @@ function Geometries() {
         {
             position: [0, 0, 0],
             r: 0.3,
-            geometry: new THREE.IcosahedronGeometry(3), // Gem
+            geometry: new THREE.IcosahedronGeometry(3.75), // Gem
         },
 
         // pill boi
         {
-            position: [1, -0.75, 4],
+            position: [1.3, -0.95, 4],
             r: 0.4,
-            geometry: new THREE.CapsuleGeometry(0.5, 1.6, 2, 16), // Pill
+            geometry: new THREE.CapsuleGeometry(0.75, 1.76, 3, 16), // Pill
         },
 
-        // this one look like the center one
+        // cai giong tru cot
         {
-            position: [-1.4, 2, -4],
+            position: [-1.9, 2.3, -3],
             r: 0.6,
-            geometry: new THREE.CylinderGeometry( 1, 1, 4, 6.4 ), // Soccer Ball
+            geometry: new THREE.CylinderGeometry( 1.5, 1.5, 4, 6.4 ), // Soccer Ball
         },
 
         // donut
         {
-            position: [-0.8, -0.75, 5],
+            position: [-0.95, -0.75, 5],
             r: 0.5,
-            geometry: new THREE.TorusGeometry(0.6, 0.25, 16, 32), // donut
+            geometry: new THREE.TorusGeometry(0.9, 0.45, 32, 32), // donut
         },
 
         // diamond
         {
-            position: [1.6, 1.6, -4],
+            position: [2.6, 2.0, -5],
             r: 0.7,
-            geometry: new THREE.OctahedronGeometry(1.5), // diamond
+            geometry: new THREE.OctahedronGeometry(2), // diamond
         },
     ];
 
@@ -79,16 +79,8 @@ function Geometries() {
         new THREE.MeshStandardMaterial({color: 0xF2C185, roughness: 0.1}),
         new THREE.MeshStandardMaterial({color: 0xF29999, roughness: 0.1}),
         new THREE.MeshStandardMaterial({color: 0xF2B5A7, roughness: 0.1}),
-        new THREE.MeshStandardMaterial({
-            roughness: 0,
-            metalness: 0.5,
-            color: 0xF29999,
-        }),
-        new THREE.MeshStandardMaterial({
-            color: 0xF28DA8,
-            roughness: 0.1,
-            metalness: 0.5,
-        })
+        new THREE.MeshStandardMaterial({color: 0xF29999, roughness: 0, metalness: 0.5 }),
+        new THREE.MeshStandardMaterial({color: 0xF28DA8, roughness: 0.1, metalness: 0.5 })
     ];
 
     const soundEffects = [
