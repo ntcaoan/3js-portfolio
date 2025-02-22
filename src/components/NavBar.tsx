@@ -102,7 +102,7 @@ function NameLogo() {
             aria-label="Home page"
         >
             <Image
-                src="/anna-logo.png"
+                src="/anna-logo-dark.png"
                 alt="Logo"
                 width={64}
                 height={64}

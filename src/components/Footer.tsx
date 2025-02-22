@@ -21,7 +21,7 @@ export default async function Footer() {
                         className="text-xl font-bold tracking-tighter text-slate-100 transition-colors duration-150 hover:text-pink-400"
                     >
                         <Image
-                            src="/anna-logo.png"
+                            src="/anna-logo-pink.png"
                             alt="Logo"
                             width={64}
                             height={64}
