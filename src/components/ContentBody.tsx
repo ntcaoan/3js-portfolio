@@ -39,7 +39,7 @@ export default async function ContentBody({page}: {
                 <p className="mt-8 border-b border-stone-600 text-xl font-medium text-stone-300">
                     {formattedDate}
                 </p>
-                <div className="prose prose-lg prose-invert mt-10 w-full max-w-none md:mt-17">
+                <div className="prose prose-lg prose-invert mt-10 w-full max-w-none [&>*]:max-w-full md:mt-17">
                     <SliceZone slices={page.data.slices} components={components}/>
                 </div>
             </div>
