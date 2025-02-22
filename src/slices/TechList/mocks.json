@@ -33,6 +33,11 @@
 						]
 					}
 				]
+			},
+			"description": {
+				"__TYPE__": "FieldContent",
+				"value": "speak",
+				"type": "Text"
 			}
 		},
 		"items": []

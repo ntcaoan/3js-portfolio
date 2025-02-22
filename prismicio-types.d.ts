@@ -908,6 +908,16 @@ export interface TechListSliceDefaultPrimary {
   heading: prismic.KeyTextField;
 
   /**
+   * Description field in *TechList → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tech_list.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  description: prismic.KeyTextField;
+
+  /**
    * items field in *TechList → Default → Primary*
    *
    * - **Field Type**: Group
