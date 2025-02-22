@@ -13,7 +13,46 @@
 				"value": [
 					{
 						"__TYPE__": "GroupItemContent",
-						"value": []
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "blind",
+									"type": "Text"
+								}
+							],
+							[
+								"time_period",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "somebody",
+									"type": "Text"
+								}
+							],
+							[
+								"institution",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "nervous",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ut ut esse veniam ullamco quis velit Lorem ut pariatur ipsum. Fugiat dolore cillum enim laboris cupidatat commodo."
+											}
+										}
+									]
+								}
+							]
+						]
 					}
 				]
 			}

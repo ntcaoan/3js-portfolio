@@ -5,7 +5,7 @@ import {asImageSrc, Content, isFilled} from "@prismicio/client";
 import {MdArrowOutward} from "react-icons/md";
 import Link from "next/link";
 import {gsap} from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,10 +43,10 @@ export default function ContentList({
                         opacity: 1,
                         y: 0,
                         duration: 1.3,
-                        ease: "eastic.out(1,0.5)", // elastic
+                        ease: "elastic.out(1,0.3)", // elastic
                         scrollTrigger: {
                             trigger: item,
-                            start: "top bottom-=100px",
+                            start: "top bottom-=200px",
                             end: "bottom center",
                             toggleActions: "play none none none"
                         }
@@ -125,12 +125,14 @@ export default function ContentList({
             <ul className="grid border-b border-b-slate-100" onMouseLeave={onMouseLeave}>
                 {items.map((item, index) => (
                     <React.Fragment key={index}>
-                    {/*<>*/}
+                        {/*<>*/}
                         {isFilled.keyText(item.data.title) && (
                             <li key={index}
-                                className="list-item opacity-0f"
+                                className="list-item opacity-0"
                                 onMouseEnter={() => onMouseEnter(index)}
-                                ref={(el) => {(itemsRef.current[index] = el)}}
+                                ref={(el) => {
+                                    (itemsRef.current[index] = el)
+                                }}
                             >
                                 <Link
                                     href={urlPrefixes + "/" + item.uid}

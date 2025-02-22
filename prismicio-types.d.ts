@@ -168,6 +168,7 @@ export type HomepageDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ExperienceSlice
   | ContentIndexSlice
   | TechListSlice
   | BiographySlice;
@@ -663,7 +664,47 @@ export type ContentIndexSlice = prismic.SharedSlice<
 /**
  * Item in *Experience → Default → Primary → Items*
  */
-export interface ExperienceSliceDefaultPrimaryItemsItem {}
+export interface ExperienceSliceDefaultPrimaryItemsItem {
+  /**
+   * Title field in *Experience → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.default.primary.items[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Time Period field in *Experience → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.default.primary.items[].time_period
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  time_period: prismic.KeyTextField;
+
+  /**
+   * Institution field in *Experience → Default → Primary → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.default.primary.items[].institution
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  institution: prismic.KeyTextField;
+
+  /**
+   * Description field in *Experience → Default → Primary → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: experience.default.primary.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
 
 /**
  * Primary content in *Experience → Default → Primary*
