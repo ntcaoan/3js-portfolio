@@ -75,10 +75,11 @@ function Geometries() {
     const materials = [
         new THREE.MeshNormalMaterial(),
         new THREE.MeshStandardMaterial({color: 0xC2ACF2, roughness: 0}),
-        new THREE.MeshStandardMaterial({color: 0x8FD9A1, roughness: 0.4}),
+        new THREE.MeshStandardMaterial({color: 0xC27BA0, roughness: 0.4}),
         new THREE.MeshStandardMaterial({color: 0xF2C185, roughness: 0.1}),
         new THREE.MeshStandardMaterial({color: 0xF29999, roughness: 0.1}),
         new THREE.MeshStandardMaterial({color: 0xF2B5A7, roughness: 0.1}),
+        new THREE.MeshStandardMaterial({color: 0x7E7568, roughness: 0, metalness: 0.5 }),
         new THREE.MeshStandardMaterial({color: 0xF29999, roughness: 0, metalness: 0.5 }),
         new THREE.MeshStandardMaterial({color: 0xF28DA8, roughness: 0.1, metalness: 0.5 })
     ];
