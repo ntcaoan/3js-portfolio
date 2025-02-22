@@ -29,7 +29,7 @@ export default async function ContentBody({page}: {
 
     return (
         <Bounded as={"article" as "section"}>
-            <div className="rounded-2xl border-2 border-stone-700 bg-stone-950 px-4 py-10 md:px-8 md:py-20">
+            <div className="rounded-2xl border-2 border-stone-700 bg-stone-950 px-4 py-10 md:px-10 md:py-20">
                 <Heading as="h1">{page.data.title}</Heading>
                 <div className="flex gap-4 text-pink-400 text-xl font-bold">
                     {page.tags.map((tag) => (
