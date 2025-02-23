@@ -13,13 +13,13 @@ type AvatarProps = {
 }
 
 export default function Avatar({
-    image, className
+    image, classname
 }: AvatarProps) {
 
     const component = useRef(null);
 
     useEffect(() => {
-        let ctx = gsap.context(() => {
+        gsap.context(() => {
             gsap.fromTo(
                 ".avatar",
                 {opacity:0, scale:1.4},
@@ -32,11 +32,11 @@ export default function Avatar({
                 const componentRect = (component.current as HTMLElement).getBoundingClientRect();
                 const componentCenterX = componentRect.left + componentRect.width / 2;
 
-                let componentPercent = {
+                const componentPercent = {
                     x: (e.clientX - componentCenterX) / componentRect.width / 2
                 }
 
-                let distFromCenter = 1 - Math.abs(componentPercent.x)
+                const distFromCenter = 1 - Math.abs(componentPercent.x)
 
                 gsap.timeline({
                     defaults: {duration: .5, overwrite: "auto", ease: "power3.out"}
@@ -58,7 +58,7 @@ export default function Avatar({
     }, []);
 
     return (
-        <div ref={component} className={clsx("relative h-full w-full", className)}>
+        <div ref={component} className={clsx("relative h-full w-full", classname)}>
             <div className="avatar aspect-square overflow-hidden rounded-3xl border-2 border-slate-700 opacity-0">
                 <PrismicNextImage
                     field={image}

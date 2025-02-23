@@ -7,10 +7,19 @@ import { PrismicNextLink } from "@prismicio/next";
  */
 export type TextBlockProps = SliceComponentProps<Content.TextBlockSlice>;
 
+type ExtendedTextBlockPrimary = {
+    text: Content.TextBlockSlice["primary"]["text"];
+    project_link?: { link_type: string; url?: string }; // Ensure it's optional
+};
+
+export type ExtendedTextBlockProps = Omit<TextBlockProps, "slice"> & {
+    slice: { primary: ExtendedTextBlockPrimary };
+};
+
 /**
  * Component for "TextBlock" Slices.
  */
-const TextBlock = ({slice}: TextBlockProps) => {
+const TextBlock = ({ slice }: ExtendedTextBlockProps) => {
     return (
         <div className="max-w-prose">
             <PrismicRichText field={slice.primary.text}/>
