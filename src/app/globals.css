@@ -10,3 +10,9 @@
     hsla(222, 0%, 0%, 0) 100%
     );
 }
+
+.hover-reveal {
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: -1;
+}
