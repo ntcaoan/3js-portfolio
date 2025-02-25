@@ -37,10 +37,18 @@ const Experience = ({slice}: ExperienceProps) => {
     // mouse move handler
     useEffect(() => {
         const handleMouseMove = (e: MouseEvent) => {
-            const mousePos = {x: e.clientX, y: e.clientY + window.scrollY};
+            const mousePos = {x: e.clientX, y: e.clientY}; // this allows the pic to go all over instead of horizontal only
             const speed = Math.sqrt(Math.pow(mousePos.x - lastMousePos.current.x, 2));
 
-            if (currentItem !== null) {
+            if (currentItem !== null && revealRef.current) {
+                // get the experience section's position
+                // const experienceSection = revealRef.current.parentElement;
+                // const sectionRect = experienceSection.getBoundingClientRect();
+                //
+                // // calculate vertical constraints relative to the section
+                // const maxY = sectionRect.bottom - 320; // 320 ~ img height
+                // const minY = sectionRect.top;
+
                 gsap.to(revealRef.current, {
                     x: gsap.utils.clamp(0, window.innerWidth - 250, mousePos.x - 110),
                     y: gsap.utils.clamp(0, window.innerHeight - 350, mousePos.y - 110),
@@ -69,46 +77,50 @@ const Experience = ({slice}: ExperienceProps) => {
         <Bounded
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
-            className="relative"
+            className="relative overflow-visible"
         >
             <Heading as="h2" size="lg">
                 {slice.primary.heading}
             </Heading>
 
             {/* experience stuff */}
-            <div className="relative">
-                {slice.primary.items.map((item, index) => (
-                    <div
-                        key={index}
-                        className="ml-6 mt-8 max-w-prose md:ml-12 md:mt-16"
-                        onMouseEnter={() => onMouseEnter(index)}
-                        onMouseLeave={onMouseLeave}
-                    >
-                        <Heading as="h3" size="sm">
-                            {item.title}
-                        </Heading>
-
-                        <div className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400">
-                            <span>{item.time_period}</span>
-                            <span className="text-3xl font-extralight">/</span>
-                            <span>{item.institution}</span>
-                        </div>
-
-                        <div className="prose prose-lg prose-invert mt-4">
-                            <PrismicRichText field={item.description}/>
-                        </div>
-                    </div>
-                ))}
-            </div>
-
-            {/* hover reveal image */}
             <div
-                ref={revealRef}
-                className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
-                style={{
-                    backgroundImage: currentItem !== null ? `url(${contentImages[currentItem]})` : "",
-                }}
-            />
+                className="relative"
+            >
+                    {slice.primary.items.map((item, index) => (
+                        <div
+                            key={index}
+                            className="ml-6 mt-8 max-w-prose md:ml-12 md:mt-16"
+                            onMouseEnter={() => onMouseEnter(index)}
+                            onMouseLeave={onMouseLeave}
+                        >
+                            <Heading as="h3" size="sm">
+                                {item.title}
+                            </Heading>
+
+                            <div
+                                className="mt-1 flex w-fit items-center gap-1 text-2xl font-semibold tracking-tight text-slate-400">
+                                <span>{item.time_period}</span>
+                                <span className="text-3xl font-extralight">/</span>
+                                <span>{item.institution}</span>
+                            </div>
+
+                            <div className="prose prose-lg prose-invert mt-4">
+                                <PrismicRichText field={item.description}/>
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
+
+                {/* hover reveal image */}
+                <div
+                    className="hover-reveal pointer-events-none absolute left-0 top-0 -z-10 h-[320px] w-[220px] rounded-lg bg-cover bg-center opacity-0 transition-[background] duration-300"
+                    style={{
+                        backgroundImage: currentItem !== null ? `url(${contentImages[currentItem]})` : "",
+                    }}
+                    ref={revealRef}
+                />
         </Bounded>
     );
 };

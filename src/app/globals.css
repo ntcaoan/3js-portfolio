@@ -11,8 +11,3 @@
     );
 }
 
-.hover-reveal {
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: -1;
-}
