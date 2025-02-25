@@ -19,7 +19,7 @@ const Experience = ({slice}: ExperienceProps) => {
         const image = isFilled.image(item.hover_image) ? item.hover_image : null;
         return image ? asImageSrc(image, {
             fit: "crop",
-            w: 220,
+            w: 320,
             h: 320,
             exp: -10,
         }) : "";
