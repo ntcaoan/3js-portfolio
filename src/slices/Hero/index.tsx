@@ -85,7 +85,7 @@ const Hero = ({slice}: HeroProps) => {
             <div className="grid min-h-[70vh] grid-cols-1 md:grid-cols-2 items-center">
                 <Shapes/>
                 <div className="col-start-1 md:row-start-1">
-                    <h1 className="mb-8 text-[clamp(5rem,30vmin,9rem)] font-bold leading-none
+                    <h1 className="mb-8 text-[clamp(5rem,23vmin,9rem)] font-bold leading-none
                     tracking-tighter"
                         aria-label={
                             slice.primary.first_name + " " + slice.primary.last_name
