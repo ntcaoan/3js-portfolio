@@ -38,6 +38,7 @@ export default function Avatar({
 
                 const distFromCenter = 1 - Math.abs(componentPercent.x)
 
+                // pfp can be interactive
                 gsap.timeline({
                     defaults: {duration: .5, overwrite: "auto", ease: "power3.out"}
                 }).to(".avatar",
