@@ -5,7 +5,7 @@ import {PrismicNextLink} from "@prismicio/next";
 import Link from "next/link";
 import Bounded from "@/components/Bounded";
 import {isFilled} from "@prismicio/client";
-import {FaGithub, FaTwitter, FaLinkedin} from "react-icons/fa6";
+import {FaGithub, FaLinkedin} from "react-icons/fa6";
 import Image from "next/image";
 
 export default async function Footer() {
@@ -72,15 +72,6 @@ export default async function Footer() {
                             aria-label={settings.data.name + " on GitHub"}
                         >
                             <FaGithub/>
-                        </PrismicNextLink>
-                    )}
-                    {isFilled.link(settings.data.twitter_link) && (
-                        <PrismicNextLink
-                            field={settings.data.twitter_link}
-                            className="p-2 text-2xl text-slate-300 transition-all duration-150 hover:scale-125 hover:text-pink-400"
-                            aria-label={settings.data.name + " on Twitter"}
-                        >
-                            <FaTwitter/>
                         </PrismicNextLink>
                     )}
                     {isFilled.link(settings.data.linkedin_link) && (
