@@ -30,6 +30,7 @@ const Biography = ({ slice }: BiographyProps) => {
             linkField={slice.primary.button_link}
             label={slice.primary.button_text}
         />
+        {/*update new resume*/}
 
         <Avatar
             image={slice.primary.avatar}
